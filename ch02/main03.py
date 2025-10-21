@@ -1,5 +1,3 @@
-from torch.utils.data import dataloader
-
 from ch02.dataloader import create_dataloader_v1
 
 
@@ -15,5 +13,3 @@ print(first_batch)
 print("--------------")
 second_batch = next(data_iter)
 print(second_batch)
-
-

@@ -1,5 +1,6 @@
 import re
 
+
 from ch02.simple_tokenizer_v1 import SimpleTokenizerV1
 from ch02.simple_tokenizer_v2 import SimpleTokenizerV2
 
