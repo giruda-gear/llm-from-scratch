@@ -17,7 +17,7 @@ query = inputs[1]  # journey
 attn_scores_2 = torch.empty(inputs.shape[0])
 for i, x_i in enumerate(inputs):
     attn_scores_2[i] = torch.dot(x_i, query)
-# print("attention score:", attn_scores_2)
+print("attention score:", attn_scores_2)
 # [(your <- journey), (journey <- journey), (starts <- journey), ...]
 
 # understanding dot product
