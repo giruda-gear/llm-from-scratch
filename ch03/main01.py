@@ -1,18 +1,9 @@
 import torch
 
+from ch03.data import inputs
+
 
 # 3.3.1 A simple self-attention mechanism without trainable weights
-inputs = torch.tensor(
-    [
-        [0.43, 0.15, 0.89],  # Your (x^1)
-        [0.55, 0.87, 0.66],  # journey (x^2)
-        [0.57, 0.85, 0.64],  # starts (x^3)
-        [0.22, 0.58, 0.33],  # with (x^4)
-        [0.77, 0.25, 0.10],  # one (x^5)
-        [0.05, 0.80, 0.55],  # step (x^6)
-    ]
-)
-
 query = inputs[1]  # journey
 attn_scores_2 = torch.empty(inputs.shape[0])
 for i, x_i in enumerate(inputs):
@@ -49,9 +40,8 @@ attn_weights_2 = torch.softmax(attn_scores_2, dim=0)
 # print("sum:", attn_weights_2.sum())
 
 print(attn_weights_2)
-context_vec_2 = torch.zeros(query.shape) # tensor([0., 0., 0.])
+context_vec_2 = torch.zeros(query.shape)  # tensor([0., 0., 0.])
 for i, x_i in enumerate(inputs):
     context_vec_2 += attn_weights_2[i] * x_i
-    print(attn_weights_2[i],"*" ,x_i)
+    print(attn_weights_2[i], "*", x_i)
 print("context vector:", context_vec_2)
-
