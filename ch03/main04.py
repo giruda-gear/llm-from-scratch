@@ -32,5 +32,9 @@ mask = torch.triu(torch.ones(context_length, context_length), diagonal=1)
 masked = attn_scores.masked_fill(mask.bool(), -torch.inf)
 print("masked:", masked)
 
-atten_weights = torch.softmax(masked / keys.shape[-1] ** 0.5, dim=1)
-print("atten_weights:\n", atten_weights)
+attn_weights = torch.softmax(masked / keys.shape[-1] ** 0.5, dim=1)
+print("atten_weights:\n", attn_weights)
+
+# torch.manual_seed(123)
+dropout = torch.nn.Dropout(0.5)
+print("dropout(attn_weights):\n", dropout(attn_weights))
