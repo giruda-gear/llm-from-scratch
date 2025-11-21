@@ -13,7 +13,7 @@ from ch02 import dataloader
 # print(embedding_layer(torch.tensor[3]))
 
 # 2.8 encoding word positions
-with open("ch02/the-verdict.txt", "r", encoding="utf-8") as f:
+with open("the-verdict.txt", "r", encoding="utf-8") as f:
     raw_text = f.read()
 
 vocab_size = 50257

@@ -1,7 +1,7 @@
 from ch02.dataloader import create_dataloader_v1
 
 
-with open("ch02/the-verdict.txt", "r", encoding="utf-8") as f:
+with open("the-verdict.txt", "r", encoding="utf-8") as f:
     raw_text = f.read()
 
 dataloader = create_dataloader_v1(

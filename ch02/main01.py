@@ -5,7 +5,7 @@ from ch02.simple_tokenizer_v1 import SimpleTokenizerV1
 from ch02.simple_tokenizer_v2 import SimpleTokenizerV2
 
 
-with open("ch02/the-verdict.txt", "r", encoding="utf-8") as f:
+with open("the-verdict.txt", "r", encoding="utf-8") as f:
     raw_text = f.read()
 # print("Total number of character:", len(raw_text))
 # print(raw_text[:99])
