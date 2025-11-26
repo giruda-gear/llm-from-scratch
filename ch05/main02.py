@@ -4,7 +4,7 @@ import tiktoken
 from ch02.dataloader import create_dataloader_v1
 from ch04.gpt_model import GPTModel
 from ch05.gpt_config import GPT_CONFIG_124M
-from ch05.utility import calc_loss_loader
+from ch05.utility import calc_loss_loader, train_model_simple
 
 
 with open("the-verdict.txt", "r", encoding="utf-8") as f:
@@ -60,3 +60,23 @@ with torch.no_grad():
     val_loss = calc_loss_loader(val_loader, model, device)
 print("training loss:", train_loss)
 print("validation loss:", val_loss)
+
+
+# 5.3
+torch.manual_seed(123)
+model = GPTModel(GPT_CONFIG_124M)
+model.to(device)
+optimizer = torch.optim.AdamW(model.parameters(), lr=0.0004, weight_decay=0.1)
+num_epochs = 10
+train_losses, val_losses, tokens_seen = train_model_simple(
+    model,
+    train_loader,
+    val_loader,
+    optimizer,
+    device,
+    num_epochs=num_epochs,
+    eval_freq=5,
+    eval_iter=1,
+    start_context="Every effort moves you",
+    tokenizer=tokenizer,
+)
